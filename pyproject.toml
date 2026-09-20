@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "whisper-agent"
+version = "0.1.0"
+description = "Standalone bilingual speech-transcription agent: CLI, HTTP API, and MCP server with GPU (ROCm/CUDA) acceleration."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "flask>=3.0",
+    "openai-whisper>=20231117",
+    "mcp>=1.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+whisper-agent = "whisper_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["whisper_agent*"]
